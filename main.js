@@ -1,56 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Mapeo exacto de rutas
+    // 1. Mapeo exacto de rutas con rutas relativas explícitas (./)
     const routes = {
         'inicio': {
-            html: 'inicio/inicio.html',
-            css: 'inicio/inicio.css',
-            js: 'inicio/script.js'
+            html: './inicio/inicio.html',
+            css: './inicio/inicio.css',
+            js: './inicio/script.js'
         },
         'empresa': {
-            html: 'empresa/empresa.html',
-            css: 'empresa/empresa.css',
-            js: 'empresa/script.js'
+            html: './empresa/empresa.html',
+            css: './empresa/empresa.css',
+            js: './empresa/script.js'
         },
         'publico-objetivo': {
-            html: 'publico/publico.html',
-            css: 'publico/publico.css',
-            js: 'publico/script.js'
+            html: './publico/publico.html',
+            css: './publico/publico.css',
+            js: './publico/script.js'
         },
         'identidad-corporativa': {
-            html: 'corporativa/corporativa.html',
-            css: 'corporativa/corporativa.css',
-            js: 'corporativa/script.js'
+            html: './corporativa/corporativa.html',
+            css: './corporativa/corporativa.css',
+            js: './corporativa/script.js'
         },
         'identidad-visual': {
-            html: 'visual/visual.html',
-            css: 'visual/visual.css',
-            js: 'visual/script.js'
+            html: './visual/visual.html',
+            css: './visual/visual.css',
+            js: './visual/script.js'
         },
         'imagen-institucional': {
-            html: 'imagen/imagen.html',
-            css: 'imagen/imagen.css',
-            js: 'imagen/script.js'
+            html: './imagen/imagen.html',
+            css: './imagen/imagen.css',
+            js: './imagen/script.js'
         },
         'aplicaciones': {
-            html: 'aplicacion/aplicacion.html',
-            css: 'aplicacion/aplicacion.css',
-            js: 'aplicacion/script.js'
+            html: './aplicacion/aplicacion.html',
+            css: './aplicacion/aplicacion.css',
+            js: './aplicacion/script.js'
         },
         'comunicacion': {
-            html: 'comunicacion/comunicacion.html',
-            css: 'comunicacion/comunicacion.css',
-            js: 'comunicacion/script.js'
+            html: './comunicacion/comunicacion.html',
+            css: './comunicacion/comunicacion.css',
+            js: './comunicacion/script.js'
         },
         'manual-identidad': {
-            html: 'manual/manual.html',
-            css: 'manual/manual.css',
-            js: 'manual/script.js'
+            html: './manual/manual.html',
+            css: './manual/manual.css',
+            js: './manual/script.js'
         },
         'propuestas-mejora': {
-            html: 'mejoras/mejoras.html',
-            css: 'mejoras/mejoras.css',
-            js: 'mejoras/script.js'
+            html: './mejoras/mejoras.html',
+            css: './mejoras/mejoras.css',
+            js: './mejoras/script.js'
         }
     };
 
@@ -63,13 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const arrowRight = document.getElementById('nav-arrow-right');
 
     /**
-     * Resuelve rutas de manera absoluta para evitar colisiones entre carpetas
+     * Resuelve rutas respetando la estructura del repositorio en GitHub Pages
      */
-    function resolvePath(path) {
-        if (!path) return '';
-        const a = document.createElement('a');
-        a.href = path;
-        return a.href;
+    function resolvePath(relativePath) {
+        if (!relativePath) return '';
+        // Usa URL base de la página actual para no perder el subdirectorio de GitHub Pages
+        return new URL(relativePath, window.location.href).href;
     }
 
     /**
@@ -103,17 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const resolvedCss = resolvePath(cssPath);
 
         try {
-            const response = await fetch(resolvedCss, { method: 'HEAD' });
-            const contentType = response.headers.get('content-type');
-
-            if (response.ok && contentType && contentType.includes('text/css')) {
-                moduleCssLink.setAttribute('href', resolvedCss);
-            } else {
-                console.warn(`No se pudo cargar el CSS en: ${resolvedCss}`);
-                moduleCssLink.setAttribute('href', '');
-            }
+            // Nota: Se elimina la petición HEAD que solía rebotar por políticas de CORS/servidor
+            moduleCssLink.setAttribute('href', resolvedCss);
         } catch (error) {
-            console.error(`Error al verificar CSS (${resolvedCss}):`, error);
+            console.error(`Error al vincular CSS (${resolvedCss}):`, error);
             moduleCssLink.setAttribute('href', '');
         }
     }
@@ -133,7 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const script = document.createElement('script');
         script.id = 'module-script';
-        script.src = resolvedJs;
+        // Se añade nocache para evitar bloqueos de actualización en GitHub Pages
+        script.src = `${resolvedJs}?v=${Date.now()}`;
         script.async = true;
 
         script.onerror = () => {
@@ -158,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const resolvedHtml = resolvePath(module.html);
             const response = await fetch(resolvedHtml);
 
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            if (!response.ok) throw new Error(`HTTP ${response.status} en ${resolvedHtml}`);
 
             const htmlContent = await response.text();
 
@@ -184,7 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error al cargar módulo:', error);
-            appRoot.innerHTML = '<div style="padding: 3rem; text-align: center; color: #dc3545;"><h2>Error al cargar el contenido.</h2></div>';
+            appRoot.innerHTML = `<div style="padding: 3rem; text-align: center; color: #dc3545;">
+                <h2>Error al cargar el contenido.</h2>
+                <p style="font-size: 0.9rem; color: #666;">No se pudo acceder a la ruta: ${module.html}</p>
+            </div>`;
         }
     }
 
