@@ -1,0 +1,375 @@
+/* ==========================================================================
+   VARIABLES Y RESET GLOBAL (MONOCROMÁTICO Y SOBRIO)
+   ========================================================================== */
+:root {
+  --bg-header-top: #ffffff;
+  --bg-nav: #000000; /* Fondo negro puro para el nav */
+  --nav-btn-hover: #1f1f1f; /* Hover gris muy oscuro */
+  --nav-btn-active: #ffffff; /* Fondo blanco para el botón activo */
+  --nav-text-active: #000000; /* Texto negro para el botón activo */
+  --text-main: #111111;
+  --text-muted: #666666;
+  --border-color: #e0e0e0;
+  --font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Desplazamiento suave general */
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #ffffff;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   HEADER MONOCROMÁTICO Y NAVEGACIÓN
+   ========================================================================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+/* --- FILA SUPERIOR: LOGO Y MARCA --- */
+.header-top {
+  background-color: var(--bg-header-top);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.8rem 0;
+}
+
+.top-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-title {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  color: #000000;
+}
+
+.brand-tagline {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  font-size: 0.85rem;
+  color: #333333;
+  font-weight: 500;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-item i {
+  color: #000000;
+}
+
+/* --- FILA INFERIOR: NAVBAR CARRUSEL --- */
+.main-nav {
+  background-color: var(--bg-nav);
+  padding: 0;
+  width: 100%;
+}
+
+.nav-carousel-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* padding: 0 0.5rem; */
+}
+
+/* Flechas de navegación */
+.nav-arrow {
+  background: var(--bg-nav);
+  border: none;
+  color: #ffffff;
+  font-size: 1rem;
+  /* width: 36px; */
+  /* height: 48px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-arrow:hover {
+  background-color: var(--nav-btn-hover);
+  color: #ffffff;
+}
+
+.nav-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* Contenedor con Desplazamiento Horizontal */
+.nav-container {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  flex-grow: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Botones dentro del Nav */
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 3px solid transparent;
+  text-align: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.nav-btn i {
+  font-size: 0.85rem;
+}
+
+.nav-btn:hover {
+  background-color: var(--nav-btn-hover);
+  color: #ffffff;
+}
+
+/* ESTADO ACTIVO - Contraste Monocromático Alto */
+.nav-btn.active {
+  /* border: 2px solid #f2f2f2f2 !important; */
+  background-color: var(--nav-btn-active) !important;
+  color: var(--nav-text-active) !important;
+}
+
+.nav-btn.active i {
+  color: var(--nav-text-active);
+}
+
+.mobile-toggle {
+  display: none;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 0.85rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL DEL MÓDULO (#app-root)
+   ========================================================================== */
+.main-content {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0; /* Sin padding general para no recortar hero/banners de módulos */
+}
+
+/* ==========================================================================
+   FOOTER GLOBAL
+   ========================================================================== */
+.main-footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding-top: 3.5rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-logo {
+  height: 42px;
+  width: auto;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.footer-subtitle {
+  font-size: 0.8rem;
+  color: #aaaaaa;
+}
+
+.footer-description {
+  color: #cccccc;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.footer-heading {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links button,
+.link-btn {
+  background: none;
+  border: none;
+  color: #cccccc;
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-links button:hover,
+.link-btn:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  font-size: 0.88rem;
+  color: #cccccc;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #222222;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888888;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .header-info {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-carousel-wrapper {
+    padding: 0;
+  }
+
+  .nav-btn {
+    width: 35vw;
+    justify-content: center;
+    padding: 0.75rem 0.25rem;
+    font-size: 0.75rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .nav-btn i {
+    font-size: 1rem;
+  }
+
+  .nav-arrow {
+    width: 28px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

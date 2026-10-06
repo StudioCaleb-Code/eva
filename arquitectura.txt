@@ -1,0 +1,18 @@
+EVA(ATELIER)/
+|_ assets/
+|_ global.css -- global css
+|_ main.js -- js global
+|
+|_ img/
+|   |_ ... -- todas las fotos
+|_ aplicacion/
+|   |_ index.html
+|   |_ apli.css
+|  
+|_ coporativa/
+|   |_ index.html
+|   |_ corp.css
+|   
+|_ .../ -- mas modulos
+|
+|_ index.html -- el front controller, el se encarga de llmaar a todos solo con js 

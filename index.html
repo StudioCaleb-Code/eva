@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATELIER - Arte Textil que Florece</title>
+
+  <!-- FontAwesome 6 para Íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="global.css">
+
+  <!-- CSS Dinámico para cada módulo -->
+  <link id="module-css" rel="stylesheet" href="">
+</head>
+
+<body>
+
+  <!-- ================= HEADER COMPLETO ================= -->
+  <header class="main-header">
+
+    <!-- FILA SUPERIOR: Logo + Contacto Rápido -->
+    <div class="header-top">
+      <div class="top-container">
+
+        <a href="#inicio" class="brand-logo" data-module="inicio" title="Ir al Inicio">
+          <img src="img/logo.png" alt="Atelier Logo" class="logo-img">
+          <div class="brand-text">
+            <span class="brand-title">ATELIER</span>
+            <span class="brand-tagline">Arte textil que florece</span>
+          </div>
+        </a>
+
+        <!-- Info rápida escritorio -->
+        <div class="header-info">
+          <span class="info-item">
+            <i class="fa-solid fa-location-dot"></i> Mazamari, Satipo
+          </span>
+          <span class="info-item">
+            <i class="fa-solid fa-phone"></i> Contacto Comercial
+          </span>
+        </div>
+
+        <!-- Botón Hamburguesa Móvil (Opcional/Secundario) -->
+        <button class="mobile-toggle" id="menu-toggle" aria-label="Abrir menú de navegación">
+          <i class="fa-solid fa-bars" id="menu-icon"></i>
+          <span class="toggle-text">Menú</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- FILA INFERIOR: Barra de Navegación Carrusel con Flechas -->
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <div class="nav-carousel-wrapper">
+
+        <!-- Flecha Izquierda -->
+        <button class="nav-arrow nav-arrow-left" id="nav-arrow-left" aria-label="Desplazar menú a la izquierda">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Contenedor Deslizable de Botones -->
+        <div class="nav-container" id="nav-container">
+          <button class="nav-btn active" data-module="inicio">
+            <i class="fa-solid fa-house"></i> <span>Inicio</span>
+          </button>
+          <button class="nav-btn" data-module="empresa">
+            <i class="fa-solid fa-building"></i> <span>Empresa</span>
+          </button>
+          <button class="nav-btn" data-module="publico-objetivo">
+            <i class="fa-solid fa-users"></i> <span>Público objetivo</span>
+          </button>
+          <button class="nav-btn" data-module="identidad-corporativa">
+            <i class="fa-solid fa-briefcase"></i> <span>Identidad corporativa</span>
+          </button>
+          <button class="nav-btn" data-module="identidad-visual">
+            <i class="fa-solid fa-palette"></i> <span>Identidad visual</span>
+          </button>
+          <button class="nav-btn" data-module="imagen-institucional">
+            <i class="fa-solid fa-award"></i> <span>Imagen institucional</span>
+          </button>
+          <button class="nav-btn" data-module="aplicaciones">
+            <i class="fa-solid fa-layer-group"></i> <span>Aplicaciones</span>
+          </button>
+          <button class="nav-btn" data-module="comunicacion">
+            <i class="fa-solid fa-comments"></i> <span>Comunicación</span>
+          </button>
+          <button class="nav-btn" data-module="manual-identidad">
+            <i class="fa-solid fa-book"></i> <span>Manual de identidad</span>
+          </button>
+          <button class="nav-btn" data-module="propuestas-mejora">
+            <i class="fa-solid fa-chart-line"></i> <span>Propuestas de mejora</span>
+          </button>
+        </div>
+
+        <!-- Flecha Derecha -->
+        <button class="nav-arrow nav-arrow-right" id="nav-arrow-right" aria-label="Desplazar menú a la derecha">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+      </div>
+    </nav>
+
+  </header>
+
+  <!-- ================= CONTENEDOR DE CONTENIDO ================= -->
+  <main id="app-root" class="main-content">
+    <!-- JS inyecta la pantalla seleccionada -->
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="footer-container">
+
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="img/logo.png" alt="Atelier Logo" class="footer-logo">
+          <div>
+            <h3 class="footer-title">ATELIER</h3>
+            <span class="footer-subtitle">Arte textil que florece con la naturaleza.</span>
+          </div>
+        </div>
+        <p class="footer-description">
+          Vestuarios, disfraces artísticos, ecodiseño y accesorios temáticos inspirados en la Selva Central.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Explora</h4>
+        <ul class="footer-links">
+          <li><button data-module="empresa"><i class="fa-solid fa-angle-right"></i> La empresa</button></li>
+          <li><button data-module="identidad-visual"><i class="fa-solid fa-angle-right"></i> Identidad visual</button>
+          </li>
+          <li><button data-module="aplicaciones"><i class="fa-solid fa-angle-right"></i> Aplicaciones</button></li>
+          <li><button data-module="manual-identidad"><i class="fa-solid fa-angle-right"></i> Manual de
+              identidad</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Contacto</h4>
+        <div class="footer-contact">
+          <p><i class="fa-solid fa-location-dot"></i> Mazamari, Satipo, Junín.</p>
+          <p><i class="fa-solid fa-map-pin"></i> Av. Julian Ñaupari s/n</p>
+          <p>
+            <button class="link-btn" data-module="comunicacion">
+              Canales de comunicación <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Atelier S.A.C. · Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- JS Principal -->
+  <script src="main.js"></script>
+</body>
+
+</html>

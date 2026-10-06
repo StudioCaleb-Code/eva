@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap");
+
+:root {
+  --blue: #3b50cf;
+  --orange: #fd7c00;
+  --green: #089008;
+  --yellow: #ffe401;
+  --magenta: #f126f0;
+  --violet: #6c38ff;
+  --gray: #919191;
+  --ink: #1c1e24;
+  --paper: #faf8f5;
+  --soft: #f4f5fb;
+  --line: #e7e7ec;
+  --white: #ffffff;
+  --shadow: 0 18px 50px rgba(32, 35, 42, 0.08);
+  --radius: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: min(1140px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ================= HERO REFINADO ================= */
+.hero {
+  position: relative;
+  padding: 80px 0 60px;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Destellos sutiles de fondo (esquinas) */
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.hero-glow-tr {
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(241, 38, 240, 0.18) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.hero-glow-bl {
+  bottom: -120px;
+  left: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(8, 144, 8, 0.12) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+/* Insignia / Eyebrow */
+.hero-header-badge {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid rgba(231, 231, 236, 0.9);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ink);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.badge-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: inline-block;
+}
+
+/* Título Tipográfico Serif */
+.hero-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(48px, 6.8vw, 86px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  margin: 0 0 24px 0;
+  max-width: 950px;
+  color: var(--ink);
+}
+
+/* Gradientes de color para palabras clave */
+.gradient-blue-violet {
+  background: linear-gradient(
+    135deg,
+    var(--blue) 0%,
+    var(--violet) 50%,
+    var(--magenta) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-pink-orange {
+  background: linear-gradient(135deg, var(--magenta) 0%, var(--orange) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtítulo / Lead */
+.hero .lead {
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: #585c66;
+  max-width: 760px;
+  margin: 0 0 36px 0;
+  line-height: 1.6;
+}
+
+/* Banner Cápsula (Marco redondeado tipo píldora) */
+.hero-banner-capsule {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.hero-banner-img {
+  width: 100%;
+  height: auto;
+  border-radius: 999px;
+  display: block;
+  object-fit: cover;
+}
+
+/* ================= SECCIONES Y COMPONENTES ================= */
+.section {
+  padding: 80px 0;
+}
+
+.section.alt {
+  background: var(--soft);
+}
+
+.kicker {
+  display: block;
+  font-size: 12px;
+  color: var(--gray);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.section-title-wrap {
+  margin-bottom: 36px;
+}
+
+.section-title-wrap h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(30px, 4vw, 44px);
+  margin: 0;
+}
+
+/* Quote Card */
+.quote-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 44px;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--orange);
+}
+
+.quote-icon {
+  font-size: 28px;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+.quote-text {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(20px, 2.8vw, 28px);
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+
+.quote-author strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.quote-author span {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+/* Acordeón */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.accordion-item {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.accordion-item.open {
+  border-color: var(--blue);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.accordion-trigger {
+  width: 100%;
+  padding: 20px 24px;
+  background: transparent;
+  border: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social-icon {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.social-icon.fb {
+  background: #e7f0ff;
+  color: #1877f2;
+}
+.social-icon.ig {
+  background: #ffeaf4;
+  color: #e4405f;
+}
+
+.accordion-icon {
+  font-size: 22px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  color: var(--gray);
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(45deg);
+  color: var(--blue);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+}
+
+.accordion-content-inner {
+  padding: 0 24px 22px 78px;
+  color: #5a5e68;
+  font-size: 15px;
+}
+
+/* ================= ANIMACIONES DE SCROLL (ENTRADA Y SALIDA) ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Estado visible al entrar en pantalla */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Adaptación Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: 50px 0 40px;
+  }
+
+  .hero-banner-capsule {
+    border-radius: 20px;
+  }
+
+  .hero-banner-img {
+    border-radius: 16px;
+  }
+
+  .accordion-content-inner {
+    padding: 0 20px 20px;
+  }
+}
